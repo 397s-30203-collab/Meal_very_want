@@ -11,7 +11,6 @@ st.set_page_config(
     page_icon="https://i.postimg.cc/Fs7hFRWN/seukeulinsyas-2026-01-14-065826.png",
     layout="wide"
 )
-)
 
 try:
     if not CALL_FILE.exists():
