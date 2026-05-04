@@ -46,15 +46,20 @@ with col1:
                 st.warning("오늘 급식 정보 없음")
             else:
                 rows = meal_info[1].get('row')
+
                 if not rows:
                     st.warning("오늘 급식 정보 없음")
                 else:
-                    menu = rows[0].get('DDISH_NM', '')
-                    if not menu:
-                        st.warning("오늘 급식 정보 없음")
-                    else:
-                        menu = menu.replace("<br/>", "\n")
-                        st.text(menu)
+                    # 🔥 여기부터 수정됨 (핵심)
+                    for meal in rows:
+                        meal_name = meal.get("MMEAL_SC_NM", "급식")
+                        menu = meal.get("DDISH_NM", "")
+
+                        if menu:
+                            menu = menu.replace("<br/>", "\n")
+                            st.subheader(meal_name)
+                            st.text(menu)
+
         except Exception as e:
             st.warning("오늘 급식 정보 없음")
             st.info(f"상세 오류: {e}")
@@ -62,7 +67,6 @@ with col1:
 with col2:
     st.subheader("🔔 현재 호출 반")
     
-    # call.txt 자동 생성
     try:
         if not CALL_FILE.exists():
             CALL_FILE.write_text("대기중", encoding="utf-8")
