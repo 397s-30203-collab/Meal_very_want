@@ -24,7 +24,7 @@ st.set_page_config(
     layout="wide"
 )
 
-today = datetime.today().strftime("%Y%m%d")
+today = 20260506
 
 KEY = "55a38ff473224d2090f4dfc7a0300ed9"
 ATPT = "M10"
