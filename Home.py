@@ -2,7 +2,7 @@ import streamlit as st
 
 st.set_page_config(
     page_title="🚦 청주여고 급식실 정거장",
-    page_icon="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR19qbmVaS9EBCDvQTwnf_EjdIpU3ZdfUSJNw&s",
+    page_icon="https://school.cbe.go.kr/hosts/cheongjug-h/M01/logo.png",
     layout="wide"
 )
 
