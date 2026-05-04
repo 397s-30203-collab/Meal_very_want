@@ -1,11 +1,6 @@
 import streamlit as st
-import pages_01_Student
-import pages_02_Manager
-
-st.set_page_config(page_title="급식 호출 시스템")
 
 st.title("🏫 급식 호출 시스템")
-st.write("왼쪽 사이드바에서 페이지를 선택하세요.")
 
 if menu == "홈":
     st.title("홈 화면")
