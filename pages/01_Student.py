@@ -4,9 +4,7 @@ from datetime import datetime
 from pathlib import Path
 import tempfile
 
-def app():
-    st.title("학생 호출 페이지")
-    st.write("여기가 학생 화면")
+st.title("학생 페이지")
 
 CALL_FILE = Path(tempfile.gettempdir()) / "call.txt"
 
