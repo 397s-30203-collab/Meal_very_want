@@ -33,7 +33,7 @@ SCHUL = "8000069"
 col1, col2 = st.columns(2)
 
 with col1:
-    st.subheader("🍱 오늘 급식")
+    st.subheader("🍚 오늘 급식")
     
     if KEY == "여기에_API키":
         st.warning("API 키를 설정하세요. 급식 정보는 표시되지 않습니다.")
