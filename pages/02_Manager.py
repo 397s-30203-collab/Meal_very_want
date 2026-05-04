@@ -12,8 +12,6 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("👩‍🏫 급식 호출 관리자")
-
 try:
     if not CALL_FILE.exists():
         CALL_FILE.write_text("대기중", encoding="utf-8")
