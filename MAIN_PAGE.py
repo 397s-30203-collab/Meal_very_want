@@ -1,6 +1,12 @@
 import streamlit as st
 
-st.title("🏫 급식 호출 시스템")
+st.set_page_config(
+    page_title="🍱 우리학교 급식 호출 시스템",
+    page_icon="🍱",
+    layout="wide"
+)
+
+st.title("🍱 우리학교 급식 호출 시스템")
 
 st.markdown("""
 ## 시스템 안내
