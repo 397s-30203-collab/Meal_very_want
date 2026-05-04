@@ -6,7 +6,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("🚦 청주여고 급식실 정거장 https://i.postimg.cc/Fs7hFRWN/seukeulinsyas-2026-01-14-065826.png")
+st.title("🚦 청주여고 급식실 정거장", "https://i.postimg.cc/Fs7hFRWN/seukeulinsyas-2026-01-14-065826.png")
 
 st.markdown("""
 ## 시스템 안내
