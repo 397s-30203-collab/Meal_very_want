@@ -2,6 +2,10 @@ import streamlit as st
 from pathlib import Path
 import tempfile
 
+def app():
+    st.title("관리자 페이지")
+    st.write("여기가 관리자 화면")
+
 CALL_FILE = Path(tempfile.gettempdir()) / "call.txt"
 
 st.set_page_config(
