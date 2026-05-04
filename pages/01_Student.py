@@ -19,8 +19,8 @@ def fetch_menu(key: str, atpt: str, schul: str, date: str):
     return res.json()
 
 st.set_page_config(
-    page_title="🍱 우리학교 급식 호출 시스템",
-    page_icon="🍱",
+    page_title="🚦 청주여고 급식실 정거장",
+    page_icon="https://i.postimg.cc/Fs7hFRWN/seukeulinsyas-2026-01-14-065826.png",
     layout="wide"
 )
 
