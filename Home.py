@@ -1,8 +1,8 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="🍱 우리학교 급식 호출 시스템",
-    page_icon="🍱",
+    page_title="🚦 청주여고 급식실 정거장",
+    page_icon="🚌",
     layout="wide"
 )
 
