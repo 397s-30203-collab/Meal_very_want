@@ -2,26 +2,6 @@ import streamlit as st
 
 st.title("🏫 급식 호출 시스템")
 
-if menu == "홈":
-    st.title("홈 화면")
-
-elif menu == "학생 호출":
-    page_student.app()
-
-elif menu == "관리자":
-    page_admin.app()
-
-st.sidebar.title("메뉴")
-st.sidebar.write('pages')
-
-st.set_page_config(
-    page_title="🍱 우리학교 급식 호출 시스템",
-    page_icon="🍱",
-    layout="wide"
-)
-
-st.title("🍱 우리학교 급식 호출 시스템")
-
 st.markdown("""
 ## 시스템 안내
 
