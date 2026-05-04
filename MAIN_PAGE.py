@@ -1,5 +1,24 @@
 import streamlit as st
 
+import streamlit as st
+import page_student
+import page_admin
+
+st.sidebar.title("급식 호출 시스템")
+menu = st.sidebar.radio(
+    "메뉴 선택",
+    ["홈", "학생 호출", "관리자"]
+)
+
+if menu == "홈":
+    st.title("홈 화면")
+
+elif menu == "학생 호출":
+    page_student.app()
+
+elif menu == "관리자":
+    page_admin.app()
+
 st.sidebar.title("메뉴")
 st.sidebar.write('pages')
 
