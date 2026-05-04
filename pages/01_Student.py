@@ -24,8 +24,6 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("📱 급식 조회")
-
 today = datetime.today().strftime("%Y%m%d")
 
 KEY = "55a38ff473224d2090f4dfc7a0300ed9"
