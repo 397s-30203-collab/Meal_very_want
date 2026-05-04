@@ -1,6 +1,6 @@
 import streamlit as st
-import pages_01_Student.py
-import pages_02_Manager.py
+import pages_01_Student
+import pages_02_Manager
 
 st.sidebar.title("급식 호출 시스템")
 menu = st.sidebar.radio(
