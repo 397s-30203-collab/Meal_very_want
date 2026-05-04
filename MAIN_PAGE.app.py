@@ -1,5 +1,8 @@
 import streamlit as st
 
+st.sidebar.title("메뉴")
+st.sidebar.write("여기에 메뉴 넣기")
+
 st.set_page_config(
     page_title="🍱 우리학교 급식 호출 시스템",
     page_icon="🍱",
