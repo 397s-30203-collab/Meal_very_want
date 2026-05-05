@@ -11,7 +11,7 @@ st.set_page_config(
 st.title("관리자 페이지")
 
 # ---------------- 로그인 기능 추가 ----------------
-PASSWORD = "1234"  # ← 원하는 비밀번호로 변경
+PASSWORD = "cat123!"  # ← 원하는 비밀번호로 변경
 
 if "login_ok" not in st.session_state:
     st.session_state.login_ok = False
