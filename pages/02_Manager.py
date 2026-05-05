@@ -1,7 +1,7 @@
 import streamlit as st
 from pathlib import Path
 import tempfile
-from datetime import datetime
+from datetime import datetime, timedelta
 from openpyxl import Workbook, load_workbook
 
 st.set_page_config(
@@ -12,7 +12,7 @@ st.set_page_config(
 
 st.title("관리자 페이지")
 
-# ---------------- 로그인 기능 ----------------
+# ---------------- 로그인 ----------------
 PASSWORD = "cat123!"
 
 if "login_ok" not in st.session_state:
@@ -30,12 +30,12 @@ if not st.session_state.login_ok:
     st.text_input("비밀번호", type="password", key="password_input")
     st.button("로그인", on_click=login)
     st.stop()
-# -------------------------------------------
+# --------------------------------------
 
 CALL_FILE = Path(tempfile.gettempdir()) / "call.txt"
 EXCEL_FILE = Path(tempfile.gettempdir()) / "call_log.xlsx"
 
-# 엑셀 초기 생성
+# 엑셀 파일 생성
 def init_excel():
     if not EXCEL_FILE.exists():
         wb = Workbook()
@@ -44,30 +44,26 @@ def init_excel():
         ws.append(["날짜", "시간", "호출반"])
         wb.save(EXCEL_FILE)
 
-# 호출 기록 저장
+# ⭐ 호출 로그 저장 (한국시간 적용)
 def save_call_log(class_name):
     init_excel()
-    now = datetime.now()
-    date = now.strftime("%Y-%m-%d")
-    time = now.strftime("%H:%M:%S")
+
+    # 한국시간 = UTC + 9시간
+    now = datetime.utcnow() + timedelta(hours=9)
+    date = now.strftime("%Y년 %m월 %d일")
+    time = now.strftime("%H시 %M분 %S초")
 
     wb = load_workbook(EXCEL_FILE)
     ws = wb.active
     ws.append([date, time, class_name])
     wb.save(EXCEL_FILE)
 
-try:
-    if not CALL_FILE.exists():
-        CALL_FILE.write_text("대기중", encoding="utf-8")
-except Exception as e:
-    st.error(f"call.txt 생성 오류: {e}")
-    st.stop()
+# call.txt 준비
+if not CALL_FILE.exists():
+    CALL_FILE.write_text("대기중", encoding="utf-8")
 
 if "current_call" not in st.session_state:
-    try:
-        st.session_state.current_call = CALL_FILE.read_text(encoding="utf-8")
-    except:
-        st.session_state.current_call = "오류 발생"
+    st.session_state.current_call = CALL_FILE.read_text(encoding="utf-8")
 
 st.subheader("현재 상태")
 st.info(st.session_state.current_call)
@@ -75,10 +71,10 @@ st.info(st.session_state.current_call)
 st.divider()
 st.subheader("반 호출")
 
-def set_call(text: str):
+def set_call(text):
     CALL_FILE.write_text(text, encoding="utf-8")
     st.session_state.current_call = text
-    save_call_log(text)   # ⭐ 엑셀 저장
+    save_call_log(text)  # ⭐ 엑셀 기록
 
 def reset_call():
     CALL_FILE.write_text("대기중", encoding="utf-8")
@@ -111,24 +107,22 @@ cols[10].button("3학년 전체", on_click=set_call, args=("3학년 전체 출�
 
 st.divider()
 
-st.markdown("### 상태 초기화")
 if st.button("초기화"):
     reset_call()
     st.success("상태가 초기화되었습니다.")
 
-# 로그아웃
 if st.button("로그아웃"):
     st.session_state.login_ok = False
     st.rerun()
 
-# ⭐⭐⭐ 엑셀 다운로드 추가 ⭐⭐⭐
+# ⭐ 엑셀 다운로드 버튼
 st.divider()
 st.subheader("📊 호출 로그 다운로드")
 
 if EXCEL_FILE.exists():
     with open(EXCEL_FILE, "rb") as f:
         st.download_button(
-            label="엑셀 다운로드",
+            "엑셀 다운로드",
             data=f,
             file_name="급식호출로그.xlsx",
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
