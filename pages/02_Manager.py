@@ -2,15 +2,36 @@ import streamlit as st
 from pathlib import Path
 import tempfile
 
-st.title("관리자 페이지")
-
-CALL_FILE = Path(tempfile.gettempdir()) / "call.txt"
-
 st.set_page_config(
     page_title="🚦 청주여고 급식실 정거장",
     page_icon="https://i.postimg.cc/Fs7hFRWN/seukeulinsyas-2026-01-14-065826.png",
     layout="wide"
 )
+
+st.title("관리자 페이지")
+
+# ---------------- 로그인 기능 추가 ----------------
+PASSWORD = "1234"  # ← 원하는 비밀번호로 변경
+
+if "login_ok" not in st.session_state:
+    st.session_state.login_ok = False
+
+def login():
+    if st.session_state.password_input == PASSWORD:
+        st.session_state.login_ok = True
+        st.rerun()
+    else:
+        st.error("비밀번호가 틀렸습니다")
+
+# 로그인 안되어 있으면 아래 관리자 기능 실행 금지
+if not st.session_state.login_ok:
+    st.subheader("🔐 관리자 인증 필요")
+    st.text_input("비밀번호", type="password", key="password_input")
+    st.button("로그인", on_click=login)
+    st.stop()
+# --------------------------------------------------
+
+CALL_FILE = Path(tempfile.gettempdir()) / "call.txt"
 
 try:
     if not CALL_FILE.exists():
@@ -49,112 +70,82 @@ col1, col2, col3, col4, col5, col6, col7, col8, col9, col10, col11 = st.columns(
 
 with col1:
     st.button("1학년 1반", on_click=set_call, args=("1학년 1반 출발!",))
-
 with col2:
     st.button("1학년 2반", on_click=set_call, args=("1학년 2반 출발!",))
-
 with col3:
     st.button("1학년 3반", on_click=set_call, args=("1학년 3반 출발!",))
-
 with col4:
     st.button("1학년 4반", on_click=set_call, args=("1학년 4반 출발!",))
-
 with col5:
     st.button("1학년 5반", on_click=set_call, args=("1학년 5반 출발!",))
-
 with col6:
     st.button("1학년 6반", on_click=set_call, args=("1학년 6반 출발!",))
-
 with col7:
     st.button("1학년 7반", on_click=set_call, args=("1학년 7반 출발!",))
-
 with col8:
     st.button("1학년 8반", on_click=set_call, args=("1학년 8반 출발!",))
-
 with col9:
     st.button("1학년 9반", on_click=set_call, args=("1학년 9반 출발!",))
-
 with col10:
     st.button("1학년 10반", on_click=set_call, args=("1학년 10반 출발!",))
-
 with col11:
     st.button("1학년 전체", on_click=set_call, args=("1학년 전체 출발!",))
 
 st.divider()
 
-# 2학년 (확장 예시)
+# 2학년
 st.markdown("### 2학년")
 col12, col13, col14, col15, col16, col17, col18, col19, col20, col21, col22 = st.columns(11)
 
 with col12:
     st.button("2학년 1반", on_click=set_call, args=("2학년 1반 출발!",))
-
 with col13:
     st.button("2학년 2반", on_click=set_call, args=("2학년 2반 출발!",))
-
 with col14:
     st.button("2학년 3반", on_click=set_call, args=("2학년 3반 출발!",))
-
 with col15:
     st.button("2학년 4반", on_click=set_call, args=("2학년 4반 출발!",))
-
 with col16:
     st.button("2학년 5반", on_click=set_call, args=("2학년 5반 출발!",))
-
 with col17:
     st.button("2학년 6반", on_click=set_call, args=("2학년 6반 출발!",))
-
 with col18:
     st.button("2학년 7반", on_click=set_call, args=("2학년 7반 출발!",))
-
 with col19:
     st.button("2학년 8반", on_click=set_call, args=("2학년 8반 출발!",))
-
 with col20:
     st.button("2학년 9반", on_click=set_call, args=("2학년 9반 출발!",))
-
 with col21:
     st.button("2학년 10반", on_click=set_call, args=("2학년 10반 출발!",))
-
 with col22:
     st.button("2학년 전체", on_click=set_call, args=("2학년 전체 출발!",))
 
 st.divider()
 
-# 3학년 (확장 예시)
+# 3학년
 st.markdown("### 3학년")
 col23, col24, col25, col26, col27, col28, col29, col30, col31, col32, col33 = st.columns(11)
 
 with col23:
     st.button("3학년 1반", on_click=set_call, args=("3학년 1반 출발!",))
-
 with col24:
     st.button("3학년 2반", on_click=set_call, args=("3학년 2반 출발!",))
-
 with col25:
     st.button("3학년 3반", on_click=set_call, args=("3학년 3반 출발!",))
-
 with col26:
     st.button("3학년 4반", on_click=set_call, args=("3학년 4반 출발!",))
-
 with col27:
     st.button("3학년 5반", on_click=set_call, args=("3학년 5반 출발!",))
-
 with col28:
     st.button("3학년 6반", on_click=set_call, args=("3학년 6반 출발!",))
-
 with col29:
     st.button("3학년 7반", on_click=set_call, args=("3학년 7반 출발!",))
-
 with col30:
     st.button("3학년 8반", on_click=set_call, args=("3학년 8반 출발!",))
-
 with col31:
     st.button("3학년 9반", on_click=set_call, args=("3학년 9반 출발!",))
-
 with col32:
     st.button("3학년 10반", on_click=set_call, args=("3학년 10반 출발!",))
-
 with col33:
     st.button("3학년 전체", on_click=set_call, args=("3학년 전체 출발!",))
 
@@ -164,3 +155,8 @@ st.markdown("### 상태 초기화")
 if st.button("초기화", type="secondary"):
     reset_call()
     st.success("상태가 초기화되었습니다.")
+
+# 로그아웃 버튼 추가
+if st.button("로그아웃"):
+    st.session_state.login_ok = False
+    st.rerun()
