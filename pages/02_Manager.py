@@ -65,21 +65,37 @@ st.subheader("📢 현재 호출 상태")
 current_call = CALL_FILE.read_text(encoding="utf-8")
 st.info(f"현재 상태 : {current_call}")
 
-col1, col2 = st.columns(2)
+# 1학년
+st.markdown("### 1학년")
+cols = st.columns(11)
+for i in range(10):
+    cols[i].button(f"1학년 {i+1}반", on_click=set_call, args=(f"1학년 {i+1}반 출발!",))
+cols[10].button("1학년 전체", on_click=set_call, args=("1학년 전체 출발!",))
 
-with col1:
-    if st.button("🍚 급식실 호출"):
-        CALL_FILE.write_text("급식실 오세요", encoding="utf-8")
-        save_log("급식 호출 버튼 클릭")   # ⭐ 시간 기록됨
-        st.success("호출 완료!")
-        st.rerun()
+st.divider()
 
-with col2:
-    if st.button("⏹ 호출 초기화"):
-        CALL_FILE.write_text("대기중", encoding="utf-8")
-        save_log("호출 초기화 버튼 클릭")  # ⭐ 시간 기록됨
-        st.success("초기화 완료!")
-        st.rerun()
+# 2학년
+st.markdown("### 2학년")
+cols = st.columns(11)
+for i in range(10):
+    cols[i].button(f"2학년 {i+1}반", on_click=set_call, args=(f"2학년 {i+1}반 출발!",))
+cols[10].button("2학년 전체", on_click=set_call, args=("2학년 전체 출발!",))
+
+st.divider()
+
+# 3학년
+st.markdown("### 3학년")
+cols = st.columns(11)
+for i in range(10):
+    cols[i].button(f"3학년 {i+1}반", on_click=set_call, args=(f"3학년 {i+1}반 출발!",))
+cols[10].button("3학년 전체", on_click=set_call, args=("3학년 전체 출발!",))
+
+st.divider()
+
+st.markdown("### 상태 초기화")
+if st.button("초기화"):
+    reset_call()
+    st.success("상태가 초기화되었습니다.")
 
 # ==============================
 # 4️⃣ 엑셀 관리
