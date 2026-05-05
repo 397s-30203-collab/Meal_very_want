@@ -3,6 +3,7 @@ from pathlib import Path
 import tempfile
 from openpyxl import Workbook, load_workbook
 from datetime import datetime
+from zoneinfo import ZoneInfo   # ⭐ 한국시간용 추가
 
 st.set_page_config(page_title="관리자", layout="wide")
 st.title("👩‍🏫 급식 호출 관리자 페이지")
@@ -44,12 +45,12 @@ if not EXCEL_FILE.exists():
     wb.save(EXCEL_FILE)
 
 # ==============================
-# ⏰ 엑셀 기록 함수
+# ⏰ 엑셀 기록 (한국시간 적용)
 # ==============================
 def save_log(action):
-    now = datetime.now()
-    date_str = now.strftime("%Y.%m.%d")
-    time_str = now.strftime("%H:%M:%S")
+    now = datetime.now(ZoneInfo("Asia/Seoul"))  # ⭐ 한국시간 고정
+    date_str = now.strftime("%Y-%m-%d")         # ⭐ 날짜 . 형식
+    time_str = now.strftime("%H:%M:%S")         # ⭐ 시간 : 형식
 
     wb = load_workbook(EXCEL_FILE)
     ws = wb.active
@@ -61,7 +62,7 @@ def save_log(action):
 # ==============================
 def set_call(message):
     CALL_FILE.write_text(message, encoding="utf-8")
-    save_log(message)
+    save_log(message)  # ⭐ 버튼 누를 때마다 기록됨
     st.rerun()
 
 def reset_call():
@@ -128,7 +129,7 @@ st.subheader("엑셀 관리")
 def reset_excel():
     wb = load_workbook(EXCEL_FILE)
     ws = wb.active
-    ws.delete_rows(2, ws.max_row)
+    ws.delete_rows(2, ws.max_row)  # 헤더 제외 전체 삭제
     wb.save(EXCEL_FILE)
 
 col1, col2 = st.columns(2)
