@@ -5,8 +5,8 @@ from openpyxl import Workbook, load_workbook
 from datetime import datetime
 from zoneinfo import ZoneInfo   # ⭐ 한국시간용 추가
 
-st.set_page_config(page_title="관리자", layout="wide")
-st.title("👩‍🏫 급식 호출 관리자 페이지")
+st.set_page_config(page_title="🚦 청주여고 급식실 정거장", layout="wide")
+st.title("관리자 페이지")
 
 # ==============================
 # 🔐 로그인
