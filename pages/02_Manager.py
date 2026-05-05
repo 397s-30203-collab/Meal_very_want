@@ -50,8 +50,8 @@ def save_call_log(class_name):
 
     # 한국시간 = UTC + 9시간
     now = datetime.utcnow() + timedelta(hours=9)
-    date = now.strftime("%Y년 %m월 %d일")
-    time = now.strftime("%H시 %M분 %S초")
+    date = now.strftime("%Y-%m-%d")
+    time = now.strftime("%H:%M:%S")
 
     wb = load_workbook(EXCEL_FILE)
     ws = wb.active
