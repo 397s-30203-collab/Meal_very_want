@@ -6,7 +6,7 @@ from datetime import datetime
 from zoneinfo import ZoneInfo   # ⭐ 한국시간용 추가
 
 st.set_page_config(page_title="🚦 청주여고 급식실 정거장", layout="wide")
-st.title("관리자 페이지")
+st.title("👩‍🍳 관리자 페이지")
 
 # ==============================
 # 🔐 로그인
@@ -19,11 +19,11 @@ if "login" not in st.session_state:
     st.session_state.login = False
 
 if not st.session_state.login:
-    st.subheader("관리자 로그인")
+    st.subheader("🔐관리자 로그인")
 
     with st.form("login_form"):
-        pw = st.text_input("비밀번호", type="password")
-        submitted = st.form_submit_button("로그인")
+        pw = st.text_input("🔢비밀번호", type="password")
+        submitted = st.form_submit_button("✅로그인")
 
     if submitted:
         if pw == ADMIN_PASSWORD:
@@ -121,7 +121,7 @@ st.divider()
 # ==============================
 # 상태 초기화
 # ==============================
-st.markdown("### 상태 초기화")
+st.markdown("###🔄 상태 초기화")
 if st.button("초기화"):
     reset_call()
     st.success("상태가 초기화되었습니다.")
@@ -130,7 +130,7 @@ if st.button("초기화"):
 # 📊 엑셀 관리
 # ==============================
 st.divider()
-st.subheader("엑셀 관리")
+st.subheader("📊 엑셀 관리")
 
 def reset_excel():
     wb = load_workbook(EXCEL_FILE)
@@ -148,7 +148,7 @@ with col1:
 with col2:
     with open(EXCEL_FILE, "rb") as f:
         st.download_button(
-            label="엑셀 다운로드",
+            label="📥엑셀 다운로드",
             data=f,
             file_name="급식데이터.xlsx",
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
@@ -158,6 +158,6 @@ with col2:
 # 🚪 로그아웃
 # ==============================
 st.divider()
-if st.button("로그아웃"):
+if st.button("🚪로그아웃"):
     st.session_state.login = False
     st.rerun()
