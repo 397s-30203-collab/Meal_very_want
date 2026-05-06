@@ -10,7 +10,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("학생 페이지")
+st.title("👩‍🏫 학생 페이지")
 
 CALL_FILE = Path(tempfile.gettempdir()) / "call.txt"
 
