@@ -88,7 +88,7 @@ st.divider()
 # ==============================
 # ⭐ 1학년 호출
 # ==============================
-st.markdown("### 1학년")
+st.markdown("### 🥚1학년")
 cols = st.columns(11)
 cols[0].button("1학년", on_click=set_call, args=("1학년 출발!",))
 for i in range(1, 11):
@@ -99,7 +99,7 @@ st.divider()
 # ==============================
 # ⭐ 2학년 호출
 # ==============================
-st.markdown("### 2학년")
+st.markdown("### 🐥2학년")
 cols = st.columns(11)
 cols[0].button("2학년", on_click=set_call, args=("2학년 출발!",))
 for i in range(1, 11):
@@ -110,7 +110,7 @@ st.divider()
 # ==============================
 # ⭐ 3학년 호출
 # ==============================
-st.markdown("### 3학년")
+st.markdown("### 🐔3학년")
 cols = st.columns(11)
 cols[0].button("3학년", on_click=set_call, args=("3학년 출발!",))
 for i in range(1,11):
@@ -141,7 +141,7 @@ def reset_excel():
 col1, col2 = st.columns(2)
 
 with col1:
-    if st.button("엑셀 초기화"):
+    if st.button("🔄 엑셀 초기화"):
         reset_excel()
         st.success("엑셀 데이터 삭제 완료")
 
