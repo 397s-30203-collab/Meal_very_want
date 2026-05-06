@@ -22,7 +22,7 @@ if not st.session_state.login:
     st.subheader("🔐관리자 로그인")
 
     with st.form("login_form"):
-        pw = st.text_input("🔢비밀번호", type="password")
+        pw = st.text_input("비밀번호", type="password")
         submitted = st.form_submit_button("✅로그인")
 
     if submitted:
@@ -121,7 +121,7 @@ st.divider()
 # ==============================
 # 상태 초기화
 # ==============================
-st.markdown("###🔄 상태 초기화")
+st.markdown("### 🔄 상태 초기화")
 if st.button("초기화"):
     reset_call()
     st.success("상태가 초기화되었습니다.")
