@@ -115,7 +115,7 @@ st.divider()
 # ==============================
 # 상태 초기화
 # ==============================
-st.markdown("### 🔄 상태 초기화")
+st.markdown("### 상태 초기화")
 if st.button("초기화"):
     reset_call()
     st.success("상태가 초기화되었습니다.")
@@ -124,7 +124,7 @@ if st.button("초기화"):
 # 📊 엑셀 관리
 # ==============================
 st.divider()
-st.subheader("📊 엑셀 관리")
+st.subheader("엑셀 관리")
 
 def reset_excel():
     wb = load_workbook(EXCEL_FILE)
@@ -135,14 +135,14 @@ def reset_excel():
 col1, col2 = st.columns(2)
 
 with col1:
-    if st.button("🗑 엑셀 초기화"):
+    if st.button("엑셀 초기화"):
         reset_excel()
         st.success("엑셀 데이터 삭제 완료")
 
 with col2:
     with open(EXCEL_FILE, "rb") as f:
         st.download_button(
-            label="📥 엑셀 다운로드",
+            label="엑셀 다운로드",
             data=f,
             file_name="급식데이터.xlsx",
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
