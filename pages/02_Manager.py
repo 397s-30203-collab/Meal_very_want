@@ -11,6 +11,8 @@ st.title("관리자 페이지")
 # ==============================
 # 🔐 로그인
 # ==============================
+import streamlit as st
+
 ADMIN_PASSWORD = "cat123!"
 
 if "login" not in st.session_state:
@@ -18,14 +20,18 @@ if "login" not in st.session_state:
 
 if not st.session_state.login:
     st.subheader("관리자 로그인")
-    pw = st.text_input("비밀번호", type="password")
 
-    if st.button("로그인"):
+    with st.form("login_form"):
+        pw = st.text_input("비밀번호", type="password")
+        submitted = st.form_submit_button("로그인")
+
+    if submitted:
         if pw == ADMIN_PASSWORD:
             st.session_state.login = True
             st.rerun()
         else:
             st.error("비밀번호 틀림")
+
     st.stop()
 
 # ==============================
