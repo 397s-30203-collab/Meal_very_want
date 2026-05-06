@@ -49,7 +49,7 @@ if not EXCEL_FILE.exists():
 # ==============================
 def save_log(action):
     now = datetime.now(ZoneInfo("Asia/Seoul"))  # ⭐ 한국시간 고정
-    date_str = now.strftime("%Y-%m-%d")         # ⭐ 날짜 . 형식
+    date_str = now.strftime("%Y-%m-%d")         # ⭐ 날짜 - 형식
     time_str = now.strftime("%H:%M:%S")         # ⭐ 시간 : 형식
 
     wb = load_workbook(EXCEL_FILE)
@@ -84,9 +84,9 @@ st.divider()
 # ==============================
 st.markdown("### 1학년")
 cols = st.columns(11)
-for i in range(10):
+cols[0].button("1학년", on_click=set_call, args=("1학년 출발!",))
+for i in range(1, 11):
     cols[i].button(f"1-{i+1}", on_click=set_call, args=(f"1-{i+1} 출발!",))
-cols[10].button("1학년 전체", on_click=set_call, args=("1학년 전체 출발!",))
 
 st.divider()
 
@@ -95,9 +95,9 @@ st.divider()
 # ==============================
 st.markdown("### 2학년")
 cols = st.columns(11)
+cols[0].button("2학년", on_click=set_call, args=("2학년 출발!",))
 for i in range(10):
     cols[i].button(f"2-{i+1}", on_click=set_call, args=(f"2-{i+1} 출발!",))
-cols[10].button("2학년 전체", on_click=set_call, args=("2학년 전체 출발!",))
 
 st.divider()
 
@@ -106,14 +106,14 @@ st.divider()
 # ==============================
 st.markdown("### 3학년")
 cols = st.columns(11)
-for i in range(10):
+cols[0].button("3학년", on_click=set_call, args=("3학년 출발!",))
+for i in range(1,11):
     cols[i].button(f"3-{i+1}", on_click=set_call, args=(f"3-{i+1} 출발!",))
-cols[10].button("3학년 전체", on_click=set_call, args=("3학년 전체 출발!",))
 
 st.divider()
 
 # ==============================
-# 🔄 상태 초기화
+# 상태 초기화
 # ==============================
 st.markdown("### 🔄 상태 초기화")
 if st.button("초기화"):
@@ -124,7 +124,7 @@ if st.button("초기화"):
 # 📊 엑셀 관리
 # ==============================
 st.divider()
-st.subheader("엑셀 관리")
+st.subheader("📊 엑셀 관리")
 
 def reset_excel():
     wb = load_workbook(EXCEL_FILE)
