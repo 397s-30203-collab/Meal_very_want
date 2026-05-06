@@ -86,7 +86,7 @@ st.markdown("### 1학년")
 cols = st.columns(11)
 cols[0].button("1학년", on_click=set_call, args=("1학년 출발!",))
 for i in range(1, 11):
-    cols[i].button(f"1-{i}", on_click=set_call, args=(f"1-{i} 출발!",))
+    cols[i].button(f"1-{i}", on_click=set_call, args=(f"1학년 {i}반 출발!",))
 
 st.divider()
 
@@ -97,7 +97,7 @@ st.markdown("### 2학년")
 cols = st.columns(11)
 cols[0].button("2학년", on_click=set_call, args=("2학년 출발!",))
 for i in range(1, 11):
-    cols[i].button(f"2-{i}", on_click=set_call, args=(f"2-{i} 출발!",))
+    cols[i].button(f"2-{i}", on_click=set_call, args=(f"2학년 {i}반 출발!",))
 
 st.divider()
 
@@ -108,7 +108,7 @@ st.markdown("### 3학년")
 cols = st.columns(11)
 cols[0].button("3학년", on_click=set_call, args=("3학년 출발!",))
 for i in range(1,11):
-    cols[i].button(f"3-{i}", on_click=set_call, args=(f"3-{i} 출발!",))
+    cols[i].button(f"3-{i}", on_click=set_call, args=(f"3학년 {i}반 출발!",))
 
 st.divider()
 
